@@ -29,8 +29,13 @@ class Prairiedev_Rss_Block_Catalog_Latestorder extends Mage_Rss_Block_Abstract
 
     protected function _toHtml()
     {
+
+
+        
         $newurl = Mage::getUrl('rss/catalog/latestorder');
         $title = Mage::helper('rss')->__('Order Details');
+
+
 
         $rssObj = Mage::getModel('rss/rss');
         $data = array('title' => $title,
@@ -38,6 +43,16 @@ class Prairiedev_Rss_Block_Catalog_Latestorder extends Mage_Rss_Block_Abstract
             'link' => $newurl,
             'charset' => 'UTF-8',
         );
+
+        //   $data = array('name' => 'abc',
+        //     'price' => '333',
+        //     'sku' => $newurl,
+        //     'id' => '1',
+        //     'qty' => '2'
+        // );
+      
+
+
         $rssObj->_addHeader($data);
 
         $order = Mage::getModel('sales/order')->load('27604');
@@ -48,13 +63,20 @@ class Prairiedev_Rss_Block_Catalog_Latestorder extends Mage_Rss_Block_Abstract
         $i = 0;
 #loop for all order items
         foreach ($items as $itemId => $item) {
-            $data[$i]['name'] = $item->getName();
-            $data[$i]['price'] = $item->getPrice();
-            $data[$i]['sku'] = $item->getSku();
-            $data[$i]['id'] = $item->getProductId();
-            $data[$i]['qty'] = $item->getQtyToInvoice();
+            $data[$i]['title'] = $item->getName();
+            $data[$i]['description'] = $item->getPrice();
+            $data[$i]['link'] = $item->getSku();
+            $data[$i]['charset'] = $item->getProductId();
+            //$data[$i]['qty'] = $item->getQtyToInvoice();
+           
             $rssObj->_addEntry($data[$i]);
+
         }
+       
+       // echo "<pre>";
+       // print_r($rssObj);
+       // exit;
+    
 
         return $rssObj->createRssXml();
 
