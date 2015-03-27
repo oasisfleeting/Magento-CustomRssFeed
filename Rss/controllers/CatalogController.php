@@ -10,6 +10,7 @@ class Prairiedev_Rss_CatalogController extends Mage_Rss_CatalogController {
 
     public function latestorderAction()
     {
+
         $this->checkFeedEnable('latestorder');
         $this->loadLayout(false);
         $this->renderLayout();

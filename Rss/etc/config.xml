@@ -10,7 +10,6 @@
             <rss>
                 <rewrite>
                     <list>Prairiedev_Rss_Block_List</list>
-                    <catalog_category>Prairiedev_Rss_Block_Catalog_Category</catalog_category>
                     <catalog_latestorder>Prairiedev_Rss_Block_Catalog_Latestorder</catalog_latestorder>
                 </rewrite>
             </rss>
@@ -21,9 +20,8 @@
             <rss>
                 <use>standard</use>
                 <args>
-                    <modules>
-                        <Prairiedev_Rss before="Mage_Rss">Prairiedev_Rss</Prairiedev_Rss>
-                    </modules>
+                    <module before="Mage_Rss">Prairiedev_Rss</module>
+                    <frontName>rss</frontName>
                 </args>
             </rss>
         </routers>
