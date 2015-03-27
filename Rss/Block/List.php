@@ -49,7 +49,7 @@ class Prairiedev_Rss_Block_List extends Mage_Rss_Block_List {
     {
         $path = self::XML_PATH_RSS_METHODS . '/catalog/latestorder';
         if ((bool)Mage::getStoreConfig($path)) {
-            $this->addRssFeed($path, $this->__('Order Details'));
+            $this->addRssFeed($path, $this->__('Latestorder'),array(),false);
         }
     }
 
